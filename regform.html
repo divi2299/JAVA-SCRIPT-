@@ -1,0 +1,64 @@
+<html>
+<title>registrationform</title>
+<script>
+
+function validateform()
+{
+var name=document.registrationform.username.value;
+var password=document.registrationform.password.value;
+var retypedpassword=document.registrationform.password1.value; 
+var num=document.registrationform.num.value; 
+var x=document.registrationform.email.value;  
+var atpos=x.indexOf("@");  
+var dotpos=x.lastIndexOf("."); 
+
+if (name==null || name=="")
+{
+alert("Name can't be blank");
+
+return false;
+
+}
+if(password.length<8 || retypedpassword.length<8){
+
+alert("Password must be at least 8 characters long.");
+
+return false;
+
+}
+if(password!=retypedpassword){    
+alert("password must be same!");  
+return false;  
+}  
+if(isNaN(num)){  
+  document.getElementById("numloc").innerHTML="Enter Numeric value only";  
+  return false;  
+} 
+if(atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){  
+  alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);  
+  return false;  
+  }
+else
+{
+return true; 
+}
+}
+
+</script>
+<center>
+<body bgcolor="grey">
+<h1 align="CENTER" style="color:black">REGISTRATION FORM <br> <br></h1>
+<fieldset>
+<form name="registrationform" method="post" onsubmit="return validateform()"  >
+
+Name:  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;   <input type="text" name="username"><br/><br>
+Password: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <input type="password" name="password"><br/><br>
+Re-enter Password:<input type="password" name="password1"/><br/><br>
+Number:  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  <input type="text" name="num"><span id="numloc"></span><br/><br>
+Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; <input type="text" name="email"><br/><br>
+<input type="submit" value="Register">
+</form>
+</fieldset>
+</body>
+<center>
+</html>
